@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+
+    public float playerScaleLeft = -2;
+    public float playerScaleRight = 2;
     public float playerSpeed;
     public float playerWalk = 5;
     public float playerSprint = 10f;
@@ -28,7 +31,7 @@ public class PlayerMove : MonoBehaviour
             playerSpeed = playerSprint;
 
             player.velocity = new Vector2(direction * playerSpeed, player.velocity.y);
-            transform.localScale = new Vector2(0.5f, 0.5f);
+            transform.localScale = new Vector2(playerScaleRight, playerScaleRight);
 
         }
         else if (Input.GetKey(KeyCode.LeftShift) && direction < 0f)
@@ -36,7 +39,7 @@ public class PlayerMove : MonoBehaviour
             playerSpeed = playerSprint;
 
             player.velocity = new Vector2(direction * playerSpeed, player.velocity.y);
-            transform.localScale = new Vector2(-0.5f, 0.5f);
+            transform.localScale = new Vector2(playerScaleLeft, playerScaleLeft);
 
         }
         else if (direction > 0f)
@@ -44,14 +47,14 @@ public class PlayerMove : MonoBehaviour
             playerSpeed = playerWalk;
 
             player.velocity = new Vector2(direction * playerSpeed, player.velocity.y);
-            transform.localScale = new Vector2(0.5f, 0.5f);
+            transform.localScale = new Vector2(playerScaleRight, playerScaleRight);
         }
         else if (direction < 0f)
         {
             playerSpeed = playerWalk;
 
             player.velocity = new Vector2(direction * playerSpeed, player.velocity.y);
-            transform.localScale = new Vector2(-0.5f, 0.5f);
+            transform.localScale = new Vector2(playerScaleLeft, playerScaleRight);
 
         }
         else
