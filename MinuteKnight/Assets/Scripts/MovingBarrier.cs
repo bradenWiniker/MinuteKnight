@@ -10,7 +10,7 @@ public class MovingBarrier : MonoBehaviour
     public float barrierDistance = 15f;
     private Rigidbody2D barrier;
 
-    public float barrierVerticleOffset;
+    public float barrierVerticalOffset = 2f;
 
     PlayerMove playerMove;
     public Rigidbody2D player;
@@ -31,7 +31,7 @@ public class MovingBarrier : MonoBehaviour
     void FixedUpdate()
     {
         barrier.velocity = new Vector2(barrierSpeed, player.velocity.y);
-        barrier.transform.position = new Vector2 (barrier.transform.position.x, player.transform.position.y+ barrierVerticleOffset);
+        barrier.transform.position = new Vector2 (barrier.transform.position.x, player.transform.position.y+ barrierVerticalOffset);
 
 
     }
