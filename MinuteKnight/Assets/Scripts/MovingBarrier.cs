@@ -10,9 +10,10 @@ public class MovingBarrier : MonoBehaviour
     public float barrierDistance = 15f;
     private Rigidbody2D barrier;
 
+    public float barrierVerticleOffset;
 
     PlayerMove playerMove;
-    public GameObject player;
+    public Rigidbody2D player;
 
     // Start is called before the first frame update
     private void Awake()
@@ -27,10 +28,11 @@ public class MovingBarrier : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        barrier.transform.position = new Vector2(barrier.transform.position.x, player.transform.position.y);
-        barrier.velocity = new Vector2(barrierSpeed, barrier.velocity.y);
+        barrier.velocity = new Vector2(barrierSpeed, player.velocity.y);
+        barrier.transform.position = new Vector2 (barrier.transform.position.x, player.transform.position.y+ barrierVerticleOffset);
+
 
     }
 }
