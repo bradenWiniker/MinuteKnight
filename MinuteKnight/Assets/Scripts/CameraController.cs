@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
     public float offset;
-    public float offsetSmoothing;
+    public float cameraSpeed;
     private Vector3 playerPosition;
 
 
@@ -19,8 +19,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // gets player position for the camera to move with
         playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
 
+        // moves the camera in the direction of the player
         if (player.transform.localScale.x > 0f)
         {
             playerPosition = new Vector3(playerPosition.x + offset, playerPosition.y, playerPosition.z);
@@ -31,7 +33,9 @@ public class CameraController : MonoBehaviour
 
         }
 
-        transform.position = Vector3.Lerp(transform.position, playerPosition, offsetSmoothing * Time.deltaTime);
+
+       
+       transform.position = Vector3.Lerp(transform.position, playerPosition, cameraSpeed * Time.deltaTime);
     }
 }
 
